@@ -1,2 +1,6 @@
 .DS_Store
 *.ceu.json
+# add por mg-publicar-site (nao subir lixo)
+_shots/
+*.bak*
+_drive-materiais/
