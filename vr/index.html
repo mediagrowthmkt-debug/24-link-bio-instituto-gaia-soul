@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oceano em VR | Instituto Gaia Soul</title>
+<style>
+  :root{
+    --navy:#0A1E4D;      /* azul-marinho profundo, texto principal */
+    --azul:#1F5FAE;      /* azul-medio, destaques */
+    --branco:#FFFFFF;
+    --azul-claro:#EAF1FA;
+    --azul-borda:#D6E3F3;
+    --texto:#0A1E4D;
+    --texto-suave:#4a5f82;
+    --sombra:0 14px 34px -18px rgba(10,30,77,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--texto);
+    background:var(--branco);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+  /* HERO */
+  header.hero{
+    background:
+      radial-gradient(900px 420px at 82% -10%, rgba(31,95,174,.10), transparent 60%),
+      linear-gradient(180deg,#F5F9FE, #FFFFFF 78%);
+    border-bottom:1px solid var(--azul-borda);
+    padding:34px 20px 56px;text-align:center;
+  }
+  .brandbar{display:flex;align-items:center;justify-content:center;margin-bottom:26px}
+  .brandbar img{height:82px;width:auto;display:block}
+  .kicker{
+    display:inline-block;font-size:12.5px;letter-spacing:2.5px;text-transform:uppercase;
+    color:var(--azul);border:1px solid var(--azul-borda);border-radius:999px;
+    padding:7px 16px;margin-bottom:18px;background:var(--branco);font-weight:700;
+  }
+  h1{
+    font-size:clamp(28px,5vw,46px);line-height:1.08;font-weight:800;letter-spacing:-.6px;color:var(--navy);
+  }
+  h1 span{color:var(--azul)}
+  .sub{max-width:730px;margin:16px auto 0;color:var(--texto-suave);font-size:17px}
+  .toc{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:28px}
+  .toc a{
+    color:var(--navy);text-decoration:none;font-size:14px;font-weight:600;
+    padding:9px 15px;border-radius:10px;border:1px solid var(--azul-borda);
+    background:var(--branco);transition:.2s;
+  }
+  .toc a:hover{border-color:var(--azul);background:var(--azul-claro);transform:translateY(-1px)}
+
+  section{padding:46px 0 8px}
+  .sec-head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+  .sec-head .num{
+    flex:0 0 auto;width:38px;height:38px;border-radius:10px;display:grid;place-items:center;
+    font-weight:800;color:#fff;background:linear-gradient(135deg,var(--azul),var(--navy));
+  }
+  h2{font-size:clamp(22px,3.4vw,30px);font-weight:800;letter-spacing:-.3px;color:var(--navy)}
+  .sec-desc{color:var(--texto-suave);margin:6px 0 22px;max-width:840px}
+  .sec-desc b{color:var(--navy)}
+
+  /* GRID VIDEOS */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+  .vcard{
+    background:var(--branco);border:1px solid var(--azul-borda);border-radius:16px;overflow:hidden;
+    display:flex;flex-direction:column;transition:.22s;box-shadow:0 6px 18px -14px rgba(10,30,77,.3);
+  }
+  .vcard:hover{transform:translateY(-4px);border-color:var(--azul);box-shadow:var(--sombra)}
+  .thumb{position:relative;aspect-ratio:16/9;background:var(--azul-claro);cursor:pointer}
+  .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .thumb .play{
+    position:absolute;inset:0;display:grid;place-items:center;
+    background:linear-gradient(180deg,rgba(10,30,77,.02),rgba(10,30,77,.42));transition:.2s;
+  }
+  .thumb:hover .play{background:linear-gradient(180deg,rgba(10,30,77,0),rgba(10,30,77,.22))}
+  .play svg{width:62px;height:62px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.45))}
+  .badges{position:absolute;top:10px;left:10px;display:flex;gap:6px;flex-wrap:wrap}
+  .badge{
+    font-size:11px;font-weight:800;letter-spacing:.4px;padding:4px 8px;border-radius:6px;
+    background:rgba(255,255,255,.92);color:var(--navy);border:1px solid var(--azul-borda);text-transform:uppercase;
+  }
+  .badge.b3d{background:var(--navy);color:#fff;border:none}
+  .badge.b8k{background:var(--azul);color:#fff;border:none}
+  .vbody{padding:14px 15px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .vtitle{font-weight:700;font-size:15.5px;line-height:1.35;color:var(--navy)}
+  .vmeta{color:var(--texto-suave);font-size:13px;flex:1}
+  .vlink{
+    align-self:flex-start;font-size:12.5px;font-weight:700;color:var(--azul);text-decoration:none;
+    border:1px solid var(--azul-borda);padding:6px 10px;border-radius:8px;transition:.2s;
+  }
+  .vlink:hover{border-color:var(--azul);background:var(--azul-claro)}
+  .vcard iframe{width:100%;aspect-ratio:16/9;border:0;display:block}
+
+  /* CARDS GENERICOS */
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+  .card{
+    background:var(--branco);border:1px solid var(--azul-borda);border-radius:14px;padding:20px;transition:.2s;
+    box-shadow:0 6px 18px -16px rgba(10,30,77,.3);
+  }
+  .card:hover{border-color:var(--azul);transform:translateY(-3px);box-shadow:var(--sombra)}
+  .card h3{font-size:17px;margin-bottom:6px;display:flex;align-items:center;gap:8px;color:var(--navy)}
+  .card p{color:var(--texto-suave);font-size:14px;margin-bottom:12px}
+  .btn{
+    display:inline-block;text-decoration:none;font-weight:700;font-size:13.5px;
+    color:#fff;background:linear-gradient(135deg,var(--azul),var(--navy));
+    padding:9px 15px;border-radius:9px;transition:.2s;
+  }
+  .btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
+  .tag{font-size:11px;font-weight:800;color:var(--azul);text-transform:uppercase;letter-spacing:.5px}
+
+  /* PASSO A PASSO */
+  .steps{display:flex;flex-direction:column;gap:16px;counter-reset:step}
+  .step{
+    display:flex;gap:16px;background:var(--branco);border:1px solid var(--azul-borda);
+    border-radius:14px;padding:18px 20px;box-shadow:0 6px 18px -16px rgba(10,30,77,.3);
+  }
+  .step .n{
+    counter-increment:step;flex:0 0 auto;width:34px;height:34px;border-radius:50%;
+    display:grid;place-items:center;font-weight:800;color:#fff;
+    background:linear-gradient(135deg,var(--azul),var(--navy));
+  }
+  .step .n::before{content:counter(step)}
+  .step h4{font-size:16px;margin-bottom:4px;color:var(--navy)}
+  .step p{color:var(--texto-suave);font-size:14.5px}
+  code{background:var(--azul-claro);border:1px solid var(--azul-borda);padding:1px 6px;border-radius:5px;color:var(--navy);font-size:13px}
+
+  .path{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:8px}
+  .pcard{background:var(--azul-claro);border:1px solid var(--azul-borda);border-radius:14px;padding:18px}
+  .pcard .lvl{font-size:12px;font-weight:800;color:var(--azul);text-transform:uppercase;letter-spacing:.6px}
+  .pcard h4{margin:6px 0 8px;font-size:17px;color:var(--navy)}
+  .pcard p{color:var(--texto-suave);font-size:14px}
+
+  .note{
+    margin-top:14px;background:var(--azul-claro);border:1px solid var(--azul-borda);
+    border-radius:12px;padding:14px 16px;color:var(--navy);font-size:14px;
+  }
+  .note b{color:var(--azul)}
+
+  /* FOOTER assinado com a logo */
+  footer{
+    margin-top:46px;background:linear-gradient(160deg,var(--navy),#0d2a63);
+    color:#cfe0f6;padding:44px 20px 50px;text-align:center;
+  }
+  footer .flogo{height:74px;width:auto;margin-bottom:16px}
+  footer .fmade{margin-top:10px;color:#8fb0dd;font-size:13px}
+  footer .fbig{color:#fff;font-size:15px;max-width:720px;margin:0 auto}
+  hr.div{border:0;height:1px;background:linear-gradient(90deg,transparent,var(--azul-borda),transparent);margin:30px 0}
+  a.plain{color:var(--azul);font-weight:600}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brandbar"><img src="assets/logo-gaia-navy.png" alt="Instituto Gaia Soul"></div>
+    <span class="kicker">Oceano em Realidade Virtual</span>
+    <h1>Mergulhe no oceano <span>em VR</span></h1>
+    <p class="sub">Os melhores vídeos de oceano, fundo do mar e vida marinha em realidade virtual (360 e 3D), onde baixar de bancos públicos, e o passo a passo pra colocar tudo no Oculus / Meta Quest.</p>
+    <nav class="toc">
+      <a href="#apps">1. Apps prontos</a>
+      <a href="#videos">2. Galeria de vídeos VR</a>
+      <a href="#baixar">3. Bancos pra baixar</a>
+      <a href="#modelos">4. Modelos 3D do fundo</a>
+      <a href="#tutorial">5. Passo a passo no Oculus</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- 1. APPS -->
+  <section id="apps">
+    <div class="sec-head"><span class="num">1</span><h2>Caminho mais fácil: apps prontos</h2></div>
+    <p class="sec-desc">Se você só quer botar o óculos e estar no oceano hoje, sem baixar arquivo nenhum, instale direto pela loja da Meta dentro do próprio óculos. É o jeito mais simples e com a melhor qualidade.</p>
+    <div class="cards">
+      <div class="card">
+        <h3>🐋 theBlu / The Great Ocean</h3>
+        <p>Mergulho cinematográfico com baleias, tubarões e tartarugas. O mais imersivo pra "sentir" o oceano.</p>
+        <a class="btn" href="https://www.meta.com/experiences/the-great-ocean/5061664927221145/" target="_blank" rel="noopener">Ver na loja Meta</a>
+      </div>
+      <div class="card">
+        <h3>🐬 Ocean Rift</h3>
+        <p>Safári aquático com 14 habitats: golfinhos, tubarões, baleias, até bichos pré-históricos. Vira aquário no seu quarto.</p>
+        <a class="btn" href="https://www.meta.com/experiences/ocean-rift/2134272053250863/" target="_blank" rel="noopener">Ver na loja Meta</a>
+      </div>
+      <div class="card">
+        <h3>🌊 National Geographic Explore VR</h3>
+        <p>Exploração educativa e imersiva, com cenários naturais em altíssima qualidade.</p>
+        <a class="btn" href="https://www.meta.com/en-us/experiences/national-geographic-explore-vr/2046607608728563/" target="_blank" rel="noopener">Ver na loja Meta</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. VIDEOS -->
+  <section id="videos">
+    <div class="sec-head"><span class="num">2</span><h2>Galeria: melhores vídeos de oceano em VR</h2></div>
+    <p class="sec-desc">Curadoria dos melhores vídeos 360 e 3D de oceano no YouTube. Clique na miniatura pra tocar o preview aqui mesmo. Pra experiência VR de verdade, abra o mesmo vídeo pelo app <b>YouTube VR</b> dentro do óculos (botão "Abrir no YouTube" em cada card). Os marcados <span class="badge b3d" style="display:inline-block;margin:0 2px">3D</span> têm profundidade estereoscópica real.</p>
+    <div class="grid" id="videoGrid"></div>
+    <div class="note">💡 <b>Dica:</b> no óculos, procure o vídeo pelo título dentro do app <b>YouTube VR</b>. Ele reconhece 360 e 3D sozinho e coloca você dentro da cena. No navegador do computador dá pra pré-visualizar arrastando com o mouse.</div>
+  </section>
+
+  <!-- 3. BAIXAR -->
+  <section id="baixar">
+    <div class="sec-head"><span class="num">3</span><h2>Bancos pra baixar (grátis e públicos)</h2></div>
+    <p class="sec-desc">Se quiser guardar os arquivos e assistir offline, esses são os melhores bancos de vídeo 360 de oceano. Baixe os arquivos <code>.mp4</code> no computador e depois siga o passo a passo da seção 5.</p>
+    <div class="cards">
+      <div class="card">
+        <span class="tag">Grátis, sem crédito</span>
+        <h3>Pixabay</h3>
+        <p>Melhor ponto de partida. Vídeos underwater em 4K, uso livre, sem precisar dar crédito.</p>
+        <a class="btn" href="https://pixabay.com/videos/search/underwater/" target="_blank" rel="noopener">Abrir Pixabay</a>
+      </div>
+      <div class="card">
+        <span class="tag">Grátis</span>
+        <h3>Vecteezy</h3>
+        <p>Coleção específica de "360 underwater" pronta pra baixar.</p>
+        <a class="btn" href="https://www.vecteezy.com/free-videos/360-underwater" target="_blank" rel="noopener">Abrir Vecteezy</a>
+      </div>
+      <div class="card">
+        <span class="tag">Grátis, profissional</span>
+        <h3>Underwater Earth / Seaview 360</h3>
+        <p>VR de oceano feito com apoio da NOAA e The Nature Conservancy. Qualidade de documentário.</p>
+        <a class="btn" href="https://www.underwater.earth/virtual-reality" target="_blank" rel="noopener">Abrir Underwater Earth</a>
+      </div>
+      <div class="card">
+        <span class="tag">Streaming VR</span>
+        <h3>DeoVR</h3>
+        <p>App e site de VR (180, 360, 3D até 8K). Assiste direto no óculos, sem baixar.</p>
+        <a class="btn" href="https://deovr.com/" target="_blank" rel="noopener">Abrir DeoVR</a>
+      </div>
+      <div class="card">
+        <span class="tag">Público (EUA)</span>
+        <h3>NOAA Sanctuaries 360</h3>
+        <p>Santuários marinhos americanos em 360, recifes e vida marinha reais.</p>
+        <a class="btn" href="https://sanctuaries.noaa.gov/vr/" target="_blank" rel="noopener">Abrir Sanctuaries 360</a>
+      </div>
+      <div class="card">
+        <span class="tag">Pago (comercial)</span>
+        <h3>Adobe Stock / Shutterstock</h3>
+        <p>Se precisar de qualidade profissional com licença comercial garantida.</p>
+        <a class="btn" href="https://stock.adobe.com/search/video?k=360+vr+ocean" target="_blank" rel="noopener">Abrir Adobe Stock</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. MODELOS 3D -->
+  <section id="modelos">
+    <div class="sec-head"><span class="num">4</span><h2>Modelos 3D do fundo do oceano</h2></div>
+    <p class="sec-desc">Aqui é o "3D navegável" de verdade: recifes, naufrágios e chão do mar escaneados (photogrammetry). Não é vídeo, é um modelo. Dá pra abrir no navegador dentro do próprio Quest (o Sketchfab tem botão "View in VR").</p>
+    <div class="cards">
+      <div class="card">
+        <span class="tag">Público, gratuito</span>
+        <h3>NOAA Ocean Exploration</h3>
+        <p>Coleção oficial de modelos 3D reais: recifes, chaminés hidrotermais e sítios do fundo do mar.</p>
+        <a class="btn" href="https://oceanexplorer.noaa.gov/photogrammetry/" target="_blank" rel="noopener">Abrir coleção NOAA</a>
+      </div>
+      <div class="card">
+        <span class="tag">Muitos grátis</span>
+        <h3>Sketchfab, underwater</h3>
+        <p>Filtre pela tag underwater-photogrammetry e ocean-floor. Botão "View in VR" no óculos.</p>
+        <a class="btn" href="https://sketchfab.com/tags/underwater-photogrammetry" target="_blank" rel="noopener">Abrir Sketchfab</a>
+      </div>
+      <div class="card">
+        <span class="tag">Exemplo</span>
+        <h3>Chão do mar, Maui</h3>
+        <p>Modelo de fundo de oceano a 2 metros de profundidade, pronto pra ver e baixar.</p>
+        <a class="btn" href="https://sketchfab.com/3d-models/ocean-floor-2-meters-depth-maui-3f67b6d2bc77407abe2b36f982c28370" target="_blank" rel="noopener">Ver modelo</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="div">
+
+  <!-- 5. TUTORIAL -->
+  <section id="tutorial">
+    <div class="sec-head"><span class="num">5</span><h2>Passo a passo: colocar no Oculus / Meta Quest</h2></div>
+    <p class="sec-desc">Escolha um dos 3 caminhos conforme o que você quer. Do mais rápido ao mais completo.</p>
+
+    <div class="path">
+      <div class="pcard">
+        <span class="lvl">Caminho A, mais simples</span>
+        <h4>Streaming (não baixa nada)</h4>
+        <p>No óculos, instale o app <b>YouTube VR</b> ou <b>DeoVR</b>, procure "VR180 underwater" ou os títulos da galeria acima, e assista. Pronto.</p>
+      </div>
+      <div class="pcard">
+        <span class="lvl">Caminho B, arquivos próprios</span>
+        <h4>Baixar e copiar via cabo</h4>
+        <p>Baixe os <code>.mp4</code> dos bancos, copie pro óculos pelo cabo USB-C e abra num player. Passos detalhados abaixo.</p>
+      </div>
+      <div class="pcard">
+        <span class="lvl">Caminho C, 3D navegável</span>
+        <h4>Modelos do fundo do mar</h4>
+        <p>Abra a página do modelo (NOAA / Sketchfab) no <b>navegador dentro do Quest</b> e toque em "View in VR".</p>
+      </div>
+    </div>
+
+    <h3 style="margin:26px 0 14px;font-size:18px;color:var(--azul)">Caminho B detalhado (baixar vídeo e jogar no óculos)</h3>
+    <div class="steps">
+      <div class="step"><span class="n"></span><div><h4>Baixe os vídeos no computador</h4><p>Pegue os arquivos <code>.mp4</code> ou <code>.jpg</code> 360 nos bancos da seção 3 (Pixabay, Vecteezy, etc.).</p></div></div>
+      <div class="step"><span class="n"></span><div><h4>Instale um player no óculos</h4><p>Pela loja oficial da Meta (não precisa de SideQuest): instale o <b>Pigasus</b> ou o <b>Skybox</b>. Os dois leem 360, 180, 2D e 3D e detectam o formato sozinhos.</p></div></div>
+      <div class="step"><span class="n"></span><div><h4>Ative o modo desenvolvedor (só uma vez, se for usar SideQuest)</h4><p>No app Meta Quest do celular: Menu, Dispositivos, seu óculos, Configurações do headset, Modo desenvolvedor, ativar. Para o Pigasus/Skybox da loja oficial, esse passo nem é necessário.</p></div></div>
+      <div class="step"><span class="n"></span><div><h4>Ligue o óculos no computador pelo cabo USB-C</h4><p>Dentro do óculos vai aparecer "Permitir acesso aos dados" ou "Allow USB debugging". Aceite e marque "sempre permitir deste computador".</p></div></div>
+      <div class="step"><span class="n"></span><div><h4>Copie os arquivos pras pastas certas</h4><p>O Quest aparece como um HD no computador. Jogue os <b>vídeos</b> na pasta <code>Movies</code> e as <b>fotos 360</b> na pasta <code>Pictures</code> (ou <code>360Photos</code>). Depois desconecte o cabo.</p></div></div>
+      <div class="step"><span class="n"></span><div><h4>Abra no player e ajuste o formato</h4><p>Abra o Pigasus/Skybox, ache o arquivo e toque pra tocar. Se um vídeo 3D aparecer "dobrado", troque o modo no player (Mono 360, 3D over-under ou 3D side-by-side) até a imagem encaixar.</p></div></div>
+    </div>
+
+    <div class="note">⚠️ <b>Sobre o SideQuest:</b> só é necessário pra apps que não estão na loja oficial. Pra tudo aqui (ver oceano, YouTube VR, Pigasus, Skybox) os apps estão na loja da Meta, então dá pra pular essa parte. Se um dia precisar, o setup está em <a class="plain" href="https://sidequestvr.com/setup-howto" target="_blank" rel="noopener">sidequestvr.com/setup-howto</a>.</div>
+  </section>
+
+</main>
+
+<footer>
+  <img class="flogo" src="assets/logo-gaia-white.png" alt="Instituto Gaia Soul">
+  <div class="fbig">Guia montado a partir de fontes públicas: Meta Quest Store, Pixabay, Vecteezy, Underwater Earth, DeoVR, NOAA, Sketchfab e YouTube.</div>
+  <div class="fmade">Clique nas miniaturas pra pré-visualizar; abra pelo YouTube VR no óculos pra experiência completa.</div>
+</footer>
+
+<script>
+  // Curadoria dos melhores videos de oceano em VR (360 / 3D)
+  const videos = [
+    {id:"hUpkVa4UkMg", t:"theBlu: Encontro no fundo do mar", m:"A cena gigante em 3D estereoscópico real. O mais impactante da lista.", badges:["3D","360"]},
+    {id:"EbUHKw8r5xA", t:"Viagem ao fundo do mar (Nat Geo)", m:"Mergulho guiado pelos recifes de Palau com uma bióloga marinha. 360.", badges:["360","Nat Geo"]},
+    {id:"vmdM_XGkYt4", t:"Meditação oceânica em 360", m:"10 minutos relaxantes no recife de Bonaire. Ótimo pra calmaria.", badges:["360","4K"]},
+    {id:"G8tkbHUxpUQ", t:"Recife de corais em 360 (48 min)", m:"Passeio longo e relaxante por um recife cheio de peixes, tartarugas e corais.", badges:["360","4K"]},
+    {id:"_hHi4IiiU8g", t:"Descida ao oceano profundo", m:"Expedição Nekton: do azul da superfície até as zonas mais fundas do mar.", badges:["360"]},
+    {id:"6WAr8oj1_0c", t:"Grande Barreira de Corais", m:"O maior recife de coral do mundo, na Austrália, em 360 4K.", badges:["360","4K"]},
+    {id:"JeQ5J1Yj7eI", t:"Mergulho subaquático em 360", m:"Mergulho imersivo em 360, 4K, cheio de peixes e corais.", badges:["360","4K"]},
+    {id:"9whp3Hk6Kx4", t:"Até o ponto mais fundo do oceano", m:"Mergulho 360 rumo ao ponto mais profundo do planeta, na Fossa das Marianas.", badges:["360"]},
+    {id:"873wEKRT1dc", t:"Tour virtual pela Grande Barreira", m:"Passeio guiado 360 pelos corais e vida marinha da Austrália.", badges:["360"]},
+    {id:"sZO5OXuMke4", t:"Snorkel com baleia jubarte e filhote", m:"Águas azuis de Tonga, mãe e filhote nadando ao seu redor. 360 em 4K.", badges:["360","4K"]},
+    {id:"zNnkWMeEHfI", t:"Mergulho com jubartes em 360", m:"Encontro próximo com baleias jubarte em altíssima resolução.", badges:["360","8K"]},
+    {id:"1DnzTZYRjso", t:"Baleia azul e águas-vivas", m:"Observação de baleia azul com cardumes de águas-vivas. 360 4K.", badges:["360","4K"]},
+    {id:"9GjAcbv0MBU", t:"Mergulho 360: vida marinha no recife", m:"Passeio por recifes com muita vida marinha ao redor.", badges:["360","4K"]},
+    {id:"rG4jSz_2HDY", t:"Tubarão-martelo cara a cara", m:"National Geographic. Você fica frente a frente com um martelo curioso.", badges:["360","Nat Geo"]},
+    {id:"XRlK41buTAg", t:"Nadando no mar aberto, 8K", m:"Experiência 360 em 8K no oceano, com vida marinha passando perto.", badges:["360","8K"]},
+    {id:"be6R3maxhCM", t:"Encontro no oceano", m:"Cena marinha com tartarugas, águas-vivas e mais, tudo em 360.", badges:["360"]},
+    {id:"h3_R3f7phIM", t:"Arraia-manta gigante em Komodo", m:"Uma manta enorme planando bem acima de você, na Indonésia. 360.", badges:["360"]},
+    {id:"pMQmUZ3rKag", t:"Mergulho noturno com arraias-manta", m:"Nas Maldivas, à noite, mantas girando em volta de você. 360 VR.", badges:["360"]},
+    {id:"6aXtMBZJAI4", t:"Mergulho nas Maldivas em 3D", m:"Águas cristalinas das Maldivas em 360 com profundidade 3D real.", badges:["3D","360"]},
+    {id:"wbK5jIhYndk", t:"Águas-vivas em 360", m:"Cardume de águas-vivas flutuando ao seu redor, calmo e hipnótico.", badges:["360"]},
+    {id:"NYpFW4InfN0", t:"Tartaruga, arraia e águas-vivas", m:"Mergulho 360 com tartaruga, arraia e águas-vivas na mesma cena. 4K.", badges:["360","4K"]}
+  ];
+
+  const grid = document.getElementById("videoGrid");
+
+  function badgeHtml(b){
+    let cls = "badge";
+    if(b === "3D") cls += " b3d";
+    if(b === "8K") cls += " b8k";
+    return `<span class="${cls}">${b}</span>`;
+  }
+
+  videos.forEach(v => {
+    const card = document.createElement("div");
+    card.className = "vcard";
+    card.innerHTML = `
+      <div class="thumb" data-id="${v.id}">
+        <img src="https://img.youtube.com/vi/${v.id}/maxresdefault.jpg"
+             onerror="this.onerror=null;this.src='https://img.youtube.com/vi/${v.id}/hqdefault.jpg'"
+             alt="${v.t}" loading="lazy">
+        <div class="badges">${v.badges.map(badgeHtml).join("")}</div>
+        <div class="play">
+          <svg viewBox="0 0 68 48" xmlns="http://www.w3.org/2000/svg">
+            <path d="M66.5 7.7c-.8-2.9-3-5.1-5.9-5.9C55.3.5 34 .5 34 .5S12.7.5 7.4 1.8C4.5 2.6 2.3 4.8 1.5 7.7.2 13 .2 24 .2 24s0 11 1.3 16.3c.8 2.9 3 5.1 5.9 5.9C12.7 47.5 34 47.5 34 47.5s21.3 0 26.6-1.3c2.9-.8 5.1-3 5.9-5.9C67.8 35 67.8 24 67.8 24s0-11-1.3-16.3z" fill="#1F5FAE"/>
+            <path d="M27 34l18-10-18-10z" fill="#fff"/>
+          </svg>
+        </div>
+      </div>
+      <div class="vbody">
+        <div class="vtitle">${v.t}</div>
+        <div class="vmeta">${v.m}</div>
+        <a class="vlink" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">Abrir no YouTube ↗</a>
+      </div>`;
+    grid.appendChild(card);
+
+    card.querySelector(".thumb").addEventListener("click", function(){
+      const id = this.getAttribute("data-id");
+      const iframe = document.createElement("iframe");
+      iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0`;
+      iframe.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen";
+      iframe.setAttribute("allowfullscreen","");
+      this.replaceWith(iframe);
+    });
+  });
+</script>
+</body>
+</html>
