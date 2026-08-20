@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-<title>Instituto Gaia Soul — Links</title>
-<meta name="description" content="Instituto Gaia Soul · Educação ambiental e oceânica. Assine a petição, apoie, baixe nossos e-books e seja voluntário."/>
+<title>Instituto Gaia Soul | Links oficiais</title>
+<meta name="description" content="Links oficiais do Instituto Gaia Soul: site, Imersão Azul, campanha de apoio, petição, YouTube e livros de Marcelo Telles."/>
 <meta name="theme-color" content="#0A1E4D"/>
 <link rel="icon" type="image/png" href="assets/logo-gaia-soul-color.png"/>
 <link rel="apple-touch-icon" href="assets/logo-gaia-soul-color.png"/>
@@ -12,7 +12,7 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="Instituto Gaia Soul"/>
-<meta property="og:description" content="Educação ambiental e oceânica. Mergulhe com a gente: petição, apoio, e-books gratuitos e voluntariado."/>
+<meta property="og:description" content="Conheça os projetos, apoie a causa, assine a petição e acesse os livros de Marcelo Telles."/>
 <meta property="og:image" content="assets/logo-gaia-soul-color.png"/>
 
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -128,6 +128,18 @@ html{background:var(--navy-2)}
 
 /* ===== BOTÕES (LINKS) ===== */
 .links{width:100%;display:flex;flex-direction:column;gap:.85rem}
+.link-section{width:100%;display:flex;flex-direction:column;gap:.78rem;margin-top:.45rem}
+.link-section+.link-section{margin-top:1.45rem}
+.section-title{
+  display:flex;align-items:center;gap:.6rem;
+  width:100%;font-family:var(--fh);font-size:.75rem;font-weight:800;
+  letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.78);
+}
+.section-title::before,.section-title::after{
+  content:'';height:1px;flex:1;
+  background:linear-gradient(90deg, transparent, rgba(127,216,232,.45));
+}
+.section-title::after{background:linear-gradient(90deg, rgba(127,216,232,.45), transparent)}
 .lnk{
   --accent:var(--blue);
   display:flex;align-items:center;gap:.95rem;
@@ -169,32 +181,41 @@ html{background:var(--navy-2)}
   background:linear-gradient(135deg, rgba(25,160,189,.30), rgba(31,95,174,.30));
   border-color:rgba(127,216,232,.45);
 }
-
-/* ===== SEÇÃO E-BOOKS (acordeão) ===== */
-.ebooks-panel{
-  width:100%;overflow:hidden;max-height:0;opacity:0;
-  transition:max-height .45s ease, opacity .35s ease, margin .35s ease;
+.art-card{
+  display:flex;flex-direction:column;width:100%;text-decoration:none;cursor:pointer;
+  border-radius:18px;overflow:hidden;
+  background:rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.22);
+  box-shadow:0 8px 28px rgba(3,12,35,.34), inset 0 1px 0 var(--glass-hi);
+  transition:transform .18s ease, box-shadow .25s ease, border-color .25s, filter .25s;
 }
-.ebooks-panel.open{max-height:1600px;opacity:1;margin-top:.85rem}
-.ebooks-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
-.ebook{
-  display:flex;flex-direction:column;text-decoration:none;color:var(--white);
-  background:var(--glass);border:1px solid var(--glass-bd);border-radius:14px;overflow:hidden;
-  backdrop-filter:blur(10px);transition:transform .2s,border-color .2s,box-shadow .25s;
+.art-card:hover,.art-card:focus-visible{
+  transform:translateY(-2px);
+  border-color:rgba(127,216,232,.62);
+  box-shadow:0 14px 34px rgba(3,12,35,.48), inset 0 1px 0 var(--glass-hi);
+  filter:brightness(1.04);
+  outline:none;
 }
-.ebook:hover{transform:translateY(-3px);border-color:rgba(127,216,232,.5);box-shadow:0 10px 26px rgba(3,12,35,.4)}
-.ebook .cover{position:relative;width:100%;padding-top:132%;background:var(--navy);overflow:hidden}
-.ebook .cover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.ebook .cover .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--blue-lt);background:linear-gradient(145deg,#0c2454,#0a1f49)}
-.ebook .meta{padding:.6rem .7rem .75rem}
-.ebook .meta b{font-family:var(--fh);font-size:.78rem;font-weight:700;line-height:1.25;display:block}
-.ebook .meta em{font-style:normal;display:inline-flex;align-items:center;gap:.3rem;font-size:.68rem;color:var(--aqua);margin-top:.35rem;font-weight:600}
-.ebooks-empty{grid-column:1/-1;text-align:center;font-size:.82rem;color:var(--txt-soft);padding:1.2rem;border:1px dashed var(--glass-bd);border-radius:12px}
-.chev{transition:transform .35s ease}
-.lnk[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.art-card:active{transform:translateY(0)}
+.art-card img,.section-art img{
+  display:block;width:100%;height:auto;
+}
+.art-title{
+  display:block;padding:.9rem 1rem .82rem;
+  color:#fff;font-family:var(--fh);font-size:.98rem;font-weight:800;line-height:1.2;
+  text-align:center;text-shadow:0 2px 12px rgba(0,0,0,.34);
+  background:linear-gradient(180deg, rgba(10,30,77,.82), rgba(7,21,55,.72));
+  border-bottom:1px solid rgba(255,255,255,.18);
+}
+.section-art{
+  width:100%;border-radius:18px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.22);
+  box-shadow:0 8px 28px rgba(3,12,35,.30);
+}
 
 /* ===== RODAPÉ / REDES ===== */
 .socials{display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem;margin-top:2.2rem}
+.socials:empty{display:none}
 .socials a{
   width:46px;height:46px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;font-size:1.12rem;
@@ -208,50 +229,7 @@ html{background:var(--navy-2)}
 .foot a{color:rgba(255,255,255,.6);text-decoration:none}
 .foot a:hover{color:var(--aqua)}
 
-/* ===== MODAL VOLUNTÁRIO ===== */
-.modal-bg{
-  position:fixed;inset:0;z-index:50;display:none;
-  align-items:center;justify-content:center;padding:1.2rem;
-  background:rgba(5,14,38,.72);backdrop-filter:blur(6px);
-}
-.modal-bg.open{display:flex;animation:fade .25s ease}
-@keyframes fade{from{opacity:0}to{opacity:1}}
-.modal{
-  width:min(420px,100%);
-  background:linear-gradient(165deg, #0e2a63, #0a1d44);
-  border:1px solid var(--glass-bd);border-radius:20px;
-  box-shadow:0 24px 70px rgba(0,0,0,.55);
-  padding:1.6rem 1.4rem 1.5rem;position:relative;
-  animation:pop .3s cubic-bezier(.2,.9,.3,1.2);
-}
-@keyframes pop{from{transform:translateY(14px) scale(.97);opacity:0}to{transform:none;opacity:1}}
-.modal .x{position:absolute;top:.9rem;right:1rem;background:none;border:0;color:var(--txt-soft);font-size:1.3rem;cursor:pointer;line-height:1}
-.modal .x:hover{color:#fff}
-.modal .m-ic{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;
-  font-size:1.3rem;background:linear-gradient(145deg,#19a0bd,var(--blue));margin-bottom:.9rem}
-.modal h3{font-family:var(--fh);font-weight:800;font-size:1.2rem;margin-bottom:.35rem}
-.modal p{font-size:.84rem;color:var(--txt-soft);line-height:1.6;margin-bottom:1.1rem}
-.field{margin-bottom:.8rem}
-.field label{display:block;font-size:.74rem;font-weight:600;color:var(--aqua);margin-bottom:.35rem;letter-spacing:.3px}
-.field input{
-  width:100%;border:1.5px solid rgba(255,255,255,.2);border-radius:12px;
-  padding:.85rem .95rem;font:500 .92rem var(--fb);color:#fff;
-  background:rgba(255,255,255,.06);outline:none;transition:border-color .2s,box-shadow .2s;
-}
-.field input::placeholder{color:rgba(255,255,255,.4)}
-.field input:focus{border-color:var(--aqua);box-shadow:0 0 0 3px rgba(127,216,232,.18)}
-.btn-submit{
-  width:100%;border:0;border-radius:12px;cursor:pointer;margin-top:.4rem;
-  padding:.95rem;font:700 .92rem var(--fh);color:#062a18;
-  background:linear-gradient(135deg,#25d366,#1aa64f);
-  display:flex;align-items:center;justify-content:center;gap:.5rem;
-  box-shadow:0 6px 20px rgba(37,211,102,.35);transition:transform .18s,box-shadow .25s;
-}
-.btn-submit:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(37,211,102,.45)}
-.m-note{font-size:.7rem;color:rgba(255,255,255,.45);margin-top:.85rem;line-height:1.5;text-align:center}
-
 @media(max-width:380px){
-  .ebooks-grid{grid-template-columns:1fr 1fr}
   .logo-halo{width:130px;height:130px}
   .logo-halo img{width:108px}
 }
@@ -278,7 +256,7 @@ html{background:var(--navy-2)}
       <img src="assets/logo-gaia-soul-white.png" alt="Instituto Gaia Soul"/>
     </div>
     <h1>Instituto Gaia Soul</h1>
-    <p class="tag">Educação ambiental e oceânica. Mergulhe com a gente nessa onda de transformação. 🌊</p>
+    <p class="tag">Educação ambiental, cultura oceânica e projetos que aproximam pessoas da natureza.</p>
     <span class="loc"><i class="fa-solid fa-location-dot"></i> Bahia · Salvador &amp; Itaparica</span>
   </header>
 
@@ -289,34 +267,9 @@ html{background:var(--navy-2)}
   <div class="socials" id="socials" aria-label="Redes sociais"></div>
 
   <footer class="foot">
-    Instituto Gaia Soul · Organização sem fins lucrativos<br/>
-    <a href="https://institutogaiasoul.ong.br/" target="_blank" rel="noopener">institutogaiasoul.ong.br</a>
+    Instituto Gaia Soul · Organização sem fins lucrativos
   </footer>
 </main>
-
-<!-- MODAL VOLUNTÁRIO -->
-<div class="modal-bg" id="volModal" role="dialog" aria-modal="true" aria-labelledby="volTitle">
-  <div class="modal">
-    <button class="x" id="volClose" aria-label="Fechar">&times;</button>
-    <div class="m-ic"><i class="fa-solid fa-hand-holding-heart"></i></div>
-    <h3 id="volTitle">Seja voluntário(a)</h3>
-    <p>Preencha seu nome e telefone. Ao enviar, você fala direto com a gente no WhatsApp e entra pra nossa onda de voluntários. 💙</p>
-    <form id="volForm" novalidate>
-      <div class="field">
-        <label for="volNome">Seu nome</label>
-        <input type="text" id="volNome" name="nome" placeholder="Como podemos te chamar?" autocomplete="name" required/>
-      </div>
-      <div class="field">
-        <label for="volFone">Seu WhatsApp / telefone</label>
-        <input type="tel" id="volFone" name="telefone" placeholder="(71) 9 9999-9999" autocomplete="tel" required/>
-      </div>
-      <button type="submit" class="btn-submit">
-        <i class="fa-brands fa-whatsapp"></i> Quero ser voluntário(a)
-      </button>
-    </form>
-    <p class="m-note">Seus dados são usados só pra entrar em contato sobre o voluntariado.</p>
-  </div>
-</div>
 
 <script>
 /* ====================================================================
@@ -324,143 +277,123 @@ html{background:var(--navy-2)}
    Não precisa mexer no resto do código.
    ==================================================================== */
 const CONFIG = {
-  // WhatsApp oficial (formato internacional, só números). 55 + DDD + número.
-  whatsapp: "5571999972427",
-  // Mensagem que abre no WhatsApp ao clicar em "Seja voluntário".
-  voluntarioMsg: "Oii, quero ser um voluntário(a) no Instituto Gaia Soul!",
-
-  // ENDPOINT do CRM (deixe vazio por enquanto; quando configurar o CRM,
-  // cole aqui a URL do webhook e os dados do voluntário serão enviados pra lá).
-  crmEndpoint: "",
-
-  // Botões principais (em ordem)
-  links: [
+  // Categorias e botões principais, em ordem.
+  categorias: [
     {
-      id: "peticao",
-      titulo: "Assine a petição contra plásticos",
-      sub: "Pare o tsunami de plástico nos oceanos",
-      icon: "fa-solid fa-file-signature",
-      url: "https://pareotsunamideplastico.org/?utm_source=linkbio&utm_medium=social&utm_content=link_in_bio",
-      feature: true
+      titulo: "Confira",
+      itens: [
+        {
+          id: "site",
+          titulo: "Site oficial",
+          sub: "Conheça os projetos do Instituto",
+          icon: "fa-solid fa-globe",
+          image: "assets/links/card-site-oficial.png",
+          url: "https://institutogaiasoul.ong.br/"
+        },
+        {
+          id: "imersao-azul",
+          titulo: "Imersão Azul",
+          sub: "Educação oceânica em experiência viva",
+          icon: "fa-solid fa-water",
+          image: "assets/links/card-imersao-azul.png",
+          url: "https://imersaoazul.com.br/?utm_source=ig&utm_medium=social&utm_content=link_in_bio",
+          feature: true
+        },
+        {
+          id: "camiseta",
+          titulo: "Adquira sua camiseta e apoie",
+          sub: "Vista a causa e fortaleça os projetos",
+          icon: "fa-solid fa-shirt",
+          image: "assets/links/card-camiseta.png",
+          url: "https://reserva.ink/institutogaiasoul"
+        },
+        {
+          id: "peticao",
+          titulo: "Petição contra plásticos",
+          sub: "Assine pelo futuro dos oceanos",
+          icon: "fa-solid fa-file-signature",
+          image: "assets/links/card-peticao.png",
+          url: "https://pareotsunamideplastico.org/?utm_source=ig&utm_medium=social&utm_content=link_in_bio"
+        },
+        {
+          id: "youtube",
+          titulo: "YouTube",
+          sub: "Vídeos, projetos e cultura oceânica",
+          icon: "fa-brands fa-youtube",
+          image: "assets/links/card-youtube.png",
+          url: "https://www.youtube.com/@InstitutoGaiaSoul"
+        }
+      ]
     },
     {
-      id: "camiseta",
-      titulo: "Adquira sua camiseta e apoie",
-      sub: "Vista a causa · loja oficial",
-      icon: "fa-solid fa-shirt",
-      url: "https://reserva.ink/institutogaiasoul"
-    },
-    {
-      id: "ebooks",
-      titulo: "E-books",
-      sub: "Clique para ver todos",
-      icon: "fa-solid fa-book-open",
-      action: "ebooks"
-    },
-    {
-      id: "site",
-      titulo: "Nosso site",
-      sub: "institutogaiasoul.ong.br",
-      icon: "fa-solid fa-globe",
-      url: "https://institutogaiasoul.ong.br/"
-    },
-    {
-      id: "voluntario",
-      titulo: "Seja voluntário",
-      sub: "Some forças com a gente 💙",
-      icon: "fa-solid fa-hand-holding-heart",
-      action: "voluntario"
-    },
-    {
-      id: "contato",
-      titulo: "Fale conosco",
-      sub: "Chama no WhatsApp",
-      icon: "fa-brands fa-whatsapp",
-      action: "contato"
+      titulo: "Livros de Marcelo Telles",
+      sectionArt: {
+        image: "assets/links/card-livros-marcelo-telles.png",
+        alt: "Livros Trânsito Zen e O Mar de Gaia, de Marcelo Telles"
+      },
+      itens: [
+        {
+          id: "transito-zen",
+          titulo: "Trânsito Zen",
+          sub: "Livro de Marcelo Telles",
+          icon: "fa-solid fa-book-open",
+          url: "https://www.amazon.com.br/dp/B0FD8XBCVD?utm_source=ig&utm_medium=social&utm_content=link_in_bio"
+        },
+        {
+          id: "mar-de-gaia",
+          titulo: "O Mar de Gaia",
+          sub: "Livro de Marcelo Telles",
+          icon: "fa-solid fa-book",
+          url: "https://www.amazon.com.br/dp/B0FD8VDXQH?utm_source=ig&utm_medium=social&utm_content=link_in_bio"
+        }
+      ]
     }
-  ],
-
-  // E-books (aparecem na seção que abre). Para adicionar: copie um bloco.
-  // cover: caminho da capa (assets/ebooks/...) — deixe "" para usar ícone.
-  ebooks: [
-    {
-      titulo: "Trânsito Zen",
-      cover: "assets/ebooks/ebook-transito-zen.png",
-      url: "https://www.amazon.com.br/dp/B0FD8XBCVD?utm_source=linkbio&utm_medium=social&utm_content=link_in_bio"
-    },
-    {
-      titulo: "O Mar de Gaia",
-      cover: "assets/ebooks/ebook-mar-de-gaia.png",
-      url: "https://www.amazon.com.br/dp/B0FD8VDXQH?utm_source=linkbio&utm_medium=social&utm_content=link_in_bio"
-    }
-    // 👉 adicione mais e-books aqui (título, capa e link)
   ],
 
   // Redes sociais (rodapé, em ícones)
-  socials: [
-    { rede: "Instagram", icon: "fa-brands fa-instagram", url: "https://www.instagram.com/institutogaiasoul/" },
-    { rede: "YouTube",   icon: "fa-brands fa-youtube",   url: "https://www.youtube.com/@InstitutoGaiaSoul" },
-    { rede: "TikTok",    icon: "fa-brands fa-tiktok",    url: "https://www.tiktok.com/@institutogaiasoul" },
-    { rede: "LinkedIn",  icon: "fa-brands fa-linkedin-in", url: "https://www.linkedin.com/company/instituto-gaia-soul/" },
-    { rede: "Facebook",  icon: "fa-brands fa-facebook-f", url: "https://www.facebook.com/p/Instituto-Gaia-Soul-61552657763845/" },
-    { rede: "Pinterest", icon: "fa-brands fa-pinterest-p", url: "https://br.pinterest.com/institutogaiasoul/" }
-  ]
+  socials: []
 };
 
 /* ====================================================================
    RENDER
    ==================================================================== */
-const waLink = (msg) => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
-
 // --- Links ---
 const linksEl = document.getElementById('links');
-CONFIG.links.forEach(l => {
+CONFIG.categorias.forEach(categoria => {
+  const section = document.createElement('section');
+  section.className = 'link-section';
+  section.setAttribute('aria-label', categoria.titulo);
+  const title = document.createElement('h2');
+  title.className = 'section-title';
+  title.textContent = categoria.titulo;
+  section.appendChild(title);
+
+  if (categoria.sectionArt && categoria.sectionArt.image) {
+    const art = document.createElement('div');
+    art.className = 'section-art';
+    art.innerHTML = `<img src="${categoria.sectionArt.image}" alt="${categoria.sectionArt.alt || categoria.titulo}" loading="lazy">`;
+    section.appendChild(art);
+  }
+
+  categoria.itens.forEach(l => {
   const isLink = !!l.url;
   const el = document.createElement(isLink ? 'a' : 'button');
-  el.className = 'lnk' + (l.feature ? ' feature' : '');
+  el.className = (l.image ? 'art-card' : 'lnk') + (l.feature && !l.image ? ' feature' : '');
   el.type = isLink ? null : 'button';
   if (isLink) { el.href = l.url; el.target = '_blank'; el.rel = 'noopener'; }
-  el.innerHTML = `
-    <span class="ic"><i class="${l.icon}"></i></span>
-    <span class="tx"><b>${l.titulo}</b><span>${l.sub || ''}</span></span>
-    <span class="arrow">${l.action === 'ebooks' ? '<i class="fa-solid fa-chevron-down chev"></i>' : '<i class="fa-solid fa-arrow-right"></i>'}</span>`;
+  el.setAttribute('aria-label', l.titulo);
+  el.innerHTML = l.image
+    ? `<span class="art-title">${l.titulo}</span><img src="${l.image}" alt="${l.titulo}" loading="lazy">`
+    : `
+      <span class="ic"><i class="${l.icon}"></i></span>
+      <span class="tx"><b>${l.titulo}</b><span>${l.sub || ''}</span></span>
+      <span class="arrow"><i class="fa-solid fa-arrow-right"></i></span>`;
 
-  if (l.action === 'ebooks') {
-    el.setAttribute('aria-expanded', 'false');
-    el.addEventListener('click', () => toggleEbooks(el));
-  } else if (l.action === 'voluntario') {
-    el.addEventListener('click', openVol);
-  } else if (l.action === 'contato') {
-    el.addEventListener('click', () => window.open(waLink('Olá! Vim pelo link da bio e gostaria de falar com o Instituto Gaia Soul.'), '_blank'));
-  }
-  linksEl.appendChild(el);
+  section.appendChild(el);
+  });
 
-  // Painel de e-books logo abaixo do botão de e-books
-  if (l.action === 'ebooks') {
-    const panel = document.createElement('div');
-    panel.className = 'ebooks-panel';
-    panel.id = 'ebooksPanel';
-    if (CONFIG.ebooks.length === 0) {
-      panel.innerHTML = `<div class="ebooks-grid"><div class="ebooks-empty">Em breve novos e-books gratuitos por aqui. 🌊</div></div>`;
-    } else {
-      panel.innerHTML = `<div class="ebooks-grid">` + CONFIG.ebooks.map(b => `
-        <a class="ebook" href="${b.url}" target="_blank" rel="noopener">
-          <span class="cover">${b.cover
-            ? `<img src="${b.cover}" alt="${b.titulo}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><span class="ph" style="display:none"><i class="fa-solid fa-book"></i></span>`
-            : `<span class="ph"><i class="fa-solid fa-book"></i></span>`}</span>
-          <span class="meta"><b>${b.titulo}</b><em><i class="fa-solid fa-download"></i> Acessar</em></span>
-        </a>`).join('') + `</div>`;
-    }
-    linksEl.appendChild(panel);
-  }
+  linksEl.appendChild(section);
 });
-
-function toggleEbooks(btn){
-  const panel = document.getElementById('ebooksPanel');
-  const open = panel.classList.toggle('open');
-  btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-  if (open) setTimeout(() => panel.scrollIntoView({behavior:'smooth', block:'nearest'}), 150);
-}
 
 // --- Redes sociais ---
 const socEl = document.getElementById('socials');
@@ -470,39 +403,6 @@ CONFIG.socials.forEach(s => {
   a.setAttribute('aria-label', s.rede); a.title = s.rede;
   a.innerHTML = `<i class="${s.icon}"></i>`;
   socEl.appendChild(a);
-});
-
-/* ====================================================================
-   MODAL VOLUNTÁRIO
-   ==================================================================== */
-const modal = document.getElementById('volModal');
-function openVol(){ modal.classList.add('open'); document.body.style.overflow='hidden'; setTimeout(()=>document.getElementById('volNome').focus(),120); }
-function closeVol(){ modal.classList.remove('open'); document.body.style.overflow=''; }
-document.getElementById('volClose').addEventListener('click', closeVol);
-modal.addEventListener('click', e => { if (e.target === modal) closeVol(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) closeVol(); });
-
-document.getElementById('volForm').addEventListener('submit', async (e) => {
-  e.preventDefault();
-  const nome = document.getElementById('volNome').value.trim();
-  const fone = document.getElementById('volFone').value.trim();
-  if (!nome || !fone) return;
-
-  // 🔌 HOOK CRM — quando CONFIG.crmEndpoint estiver preenchido, envia os dados.
-  if (CONFIG.crmEndpoint){
-    try {
-      await fetch(CONFIG.crmEndpoint, {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ nome, telefone: fone, origem:'link-bio-voluntario', data: new Date().toISOString() })
-      });
-    } catch(err){ /* não bloqueia o WhatsApp se o CRM falhar */ }
-  }
-
-  // Abre o WhatsApp com a mensagem + dados preenchidos
-  const msg = `${CONFIG.voluntarioMsg}\n\nNome: ${nome}\nTelefone: ${fone}`;
-  window.open(waLink(msg), '_blank');
-  closeVol();
 });
 
 /* ====================================================================
