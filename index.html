@@ -9,13 +9,13 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Instituto Gaia Soul | O mar que liga tudo">
 <meta property="og:description" content="Site do Instituto, Loja Gaia Soul e todos os projetos em um só lugar.">
-<meta property="og:image" content="https://links.institutogaiasoul.ong.br/assets/heroi-janela-mobile.webp">
+<meta property="og:image" content="https://links.institutogaiasoul.ong.br/loja/img/heroi-camiseta-jubarte.webp">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#126782">
 <link rel="icon" href="assets/logo-gaia-soul-cor.webp">
+<script>if(!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){document.documentElement.classList.add('anima')}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="assets/heroi-janela-mobile.webp">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Barlow:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -34,13 +34,11 @@ section{position:relative}
 .gig{display:block;font-family:var(--titulo);font-weight:800;text-transform:uppercase;line-height:.95}
 
 /* topo */
-.topo{background:var(--mare);color:var(--branco);padding:18px 0 40px;text-align:center;overflow:hidden}
+.topo{background:var(--mare);color:var(--branco);padding:22px 0 52px;text-align:center;overflow:hidden}
 .topo .logo{width:88px;margin:0 auto 10px}
 .topo .gig{font-size:clamp(38px,11vw,56px)}
 .topo .fino{margin-bottom:6px}
 .topo p{font-size:15px;max-width:34ch;margin:8px auto 0;opacity:.92}
-.topo-arte{margin:10px auto 0;max-width:270px}
-.topo-arte img{width:100%}
 
 /* destaques: os dois sites */
 .destaques{background:var(--areia);padding:18px 0 62px}
@@ -77,12 +75,26 @@ section{position:relative}
 .lnk span{display:block;font-size:13px;opacity:.75}
 .lnk .seta{flex:0 0 16px;height:16px;opacity:.55}
 
+
+/* entrada em cascata (só com JS e sem reduced-motion; sem JS tudo aparece normal) */
+@keyframes entrar{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.anima .rev{animation:entrar .5s cubic-bezier(.22,.61,.36,1) both;animation-delay:var(--d,0ms)}
+.card,.lnk,.siga a{will-change:auto}
+.card:hover{transform:translateY(-2px)}
+.card .seta,.lnk .seta{transition:transform .25s}
+.card:hover .seta,.lnk:hover .seta{transform:translateX(4px)}
+
+/* siga o instituto */
+.siga{background:var(--mare);color:var(--branco);text-align:center;padding:8px 0 30px}
+.siga .gig{font-size:30px;color:var(--branco);margin-bottom:6px}
+.siga p{font-size:14px;opacity:.8;margin-bottom:18px}
+.siga ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:330px;margin:0 auto}
+.siga a{width:48px;height:48px;border-radius:50%;background:rgba(140,219,234,.14);color:var(--claro);display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s,transform .2s}
+.siga a:hover{background:var(--claro);color:var(--profundo);transform:translateY(-2px)}
+.siga svg{width:22px;height:22px}
+
 /* rodapé */
-.rodape{background:var(--mare);color:var(--branco);text-align:center;padding:6px 0 0}
-.redes{display:flex;justify-content:center;gap:12px;margin-bottom:18px}
-.redes a{width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s}
-.redes a:hover{border-color:var(--claro);color:var(--claro)}
-.redes svg{width:20px;height:20px}
+.rodape{background:var(--mare);color:var(--branco);text-align:center;padding:14px 0 0;border-top:1px solid rgba(255,255,255,.12)}
 .rodape .ass{font-size:13px;opacity:.8;padding:0 20px 6px}
 
 .mg-credit{display:block;text-align:center;padding:12px 16px 24px;font-size:12px;letter-spacing:.05em;line-height:1.7;color:rgba(255,255,255,.55)}
@@ -109,31 +121,34 @@ section{position:relative}
   <symbol id="i-livro" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
   <symbol id="i-whats" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2-1-1 .9c-1-.4-2-1.4-2.4-2.4l.9-1-1-2z" fill="currentColor"/></symbol>
   <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></symbol>
+  <symbol id="i-face" viewBox="0 0 24 24"><path d="M13.6 21v-7h2.4l.4-3h-2.8V9.2c0-.9.3-1.5 1.5-1.5h1.5V5.1c-.3 0-1.2-.1-2.2-.1-2.2 0-3.7 1.3-3.7 3.8V11H8.2v3h2.5v7z" fill="currentColor"/></symbol>
+  <symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M15.2 3c.4 2.3 1.9 3.8 4.3 4v3.2c-1.6 0-3-.5-4.3-1.3v6.3a5.7 5.7 0 1 1-5.7-5.7l.9.1v3.3a2.4 2.4 0 1 0 1.6 2.3V3z" fill="currentColor"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 10.5V17M8 7.4v.1M11.6 17v-6.5M11.6 13.4c0-1.8 1-2.9 2.4-2.9s2.2 1 2.2 2.8V17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-pinterest" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10.6 20.5l1.9-8.2M12.3 13.6c2.9.6 4.6-1.3 4.3-3.5-.3-2.1-2.4-3.3-4.8-2.8-2.6.6-3.6 3.3-2.3 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-google" viewBox="0 0 24 24"><path d="M19.6 12.2h-7.1M19.5 12.2A7.6 7.6 0 1 1 17.3 6.7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-kwai" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9.5 8.5v7M15 8.5l-4 3.5 4 3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
 </svg>
 
 <main>
 <section class="topo">
   <div class="wrap">
-    <img class="logo" src="assets/logo-gaia-soul-branca.webp" alt="Instituto Gaia Soul" width="320" height="195">
-    <h1><span class="fino">Instituto Gaia Soul</span><span class="gig">O mar que liga tudo.</span></h1>
-    <p>Educação ambiental e cultura oceânica que nascem na Baía do Iguape e chegam às escolas de todo o Brasil.</p>
-    <div class="topo-arte">
-      <img src="assets/heroi-janela-mobile.webp" alt="Pescador lançando a rede no mar do Recôncavo Baiano" width="660" height="420" fetchpriority="high">
-    </div>
+    <img class="logo rev" src="assets/logo-gaia-soul-branca.webp" alt="Instituto Gaia Soul" width="320" height="195">
+    <h1><span class="fino rev">Instituto Gaia Soul</span><span class="gig rev">O mar que liga tudo.</span></h1>
+    <p class="rev">Educação ambiental e cultura oceânica que nascem na Baía do Iguape e chegam às escolas de todo o Brasil.</p>
   </div>
   <svg class="onda" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34C180 66 360 6 560 26S900 70 1100 40 1340 8 1440 30V70H0Z" fill="#F3EBDD"/></svg>
 </section>
 
 <section class="destaques" id="destaques">
   <div class="wrap">
-    <p class="rotulo">Comece por aqui</p>
+    <p class="rotulo rev">Comece por aqui</p>
     <div class="duo">
-      <a class="card card-site" href="https://institutogaiasoul.ong.br/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio" target="_blank" rel="noopener">
+      <a class="rev card card-site" href="https://institutogaiasoul.ong.br/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio" target="_blank" rel="noopener">
         <span class="mini"><img src="assets/logo-gaia-soul-cor.webp" alt="" width="240" height="240" loading="lazy"></span>
         <span class="tx"><b>Site do Instituto</b><span>Projetos, impacto e como fazer parte</span></span>
         <svg class="seta"><use href="#i-seta"/></svg>
       </a>
-      <a class="card card-loja" href="loja/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio">
+      <a class="rev card card-loja" href="loja/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio">
         <span class="mini"><img src="assets/camiseta-baleia-jubarte.webp" alt="" width="600" height="600" loading="lazy"></span>
         <span class="tx"><b>Loja Gaia Soul</b><span>Camisetas que ajudam a manter os projetos</span></span>
         <svg class="seta"><use href="#i-seta"/></svg>
@@ -146,59 +161,80 @@ section{position:relative}
 
 <section class="atalhos">
   <div class="wrap">
-    <p class="rotulo">Projetos</p>
+    <p class="rotulo rev">Projetos</p>
     <ul class="lista">
-      <li><a class="lnk" href="https://imersaoazul.com.br/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio" target="_blank" rel="noopener">
+      <li class="rev"><a class="lnk" href="https://imersaoazul.com.br/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio" target="_blank" rel="noopener">
         <span class="bolha"><svg><use href="#i-onda"/></svg></span>
         <span class="tx"><b>Imersão Azul</b><span>Cultura oceânica nas escolas</span></span>
         <svg class="seta"><use href="#i-seta"/></svg></a></li>
-      <li><a class="lnk" href="vr/">
+      <li class="rev"><a class="lnk" href="vr/">
         <span class="bolha"><svg><use href="#i-vr"/></svg></span>
         <span class="tx"><b>Oceano em realidade virtual</b><span>Vídeos 360° do fundo do mar</span></span>
         <svg class="seta"><use href="#i-seta"/></svg></a></li>
-      <li><a class="lnk" href="https://pareotsunamideplastico.org/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio" target="_blank" rel="noopener">
+      <li class="rev"><a class="lnk" href="https://pareotsunamideplastico.org/?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio" target="_blank" rel="noopener">
         <span class="bolha"><svg><use href="#i-assina"/></svg></span>
         <span class="tx"><b>Petição contra plásticos</b><span>Assine pelo futuro dos oceanos</span></span>
         <svg class="seta"><use href="#i-seta"/></svg></a></li>
-      <li><a class="lnk" href="https://www.youtube.com/@InstitutoGaiaSoul" target="_blank" rel="noopener">
+      <li class="rev"><a class="lnk" href="https://www.youtube.com/@InstitutoGaiaSoul" target="_blank" rel="noopener">
         <span class="bolha"><svg><use href="#i-play"/></svg></span>
         <span class="tx"><b>YouTube</b><span>Vídeos, projetos e cultura oceânica</span></span>
         <svg class="seta"><use href="#i-seta"/></svg></a></li>
     </ul>
 
-    <p class="rotulo">Livros de Marcelo Telles</p>
+    <p class="rotulo rev">Livros de Marcelo Telles</p>
     <ul class="lista">
-      <li><a class="lnk" href="https://www.amazon.com.br/dp/B0FD8XBCVD?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio" target="_blank" rel="noopener">
+      <li class="rev"><a class="lnk" href="https://www.amazon.com.br/dp/B0FD8XBCVD?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio" target="_blank" rel="noopener">
         <span class="bolha"><svg><use href="#i-livro"/></svg></span>
         <span class="tx"><b>Trânsito Zen</b><span>Na Amazon</span></span>
         <svg class="seta"><use href="#i-seta"/></svg></a></li>
-      <li><a class="lnk" href="https://www.amazon.com.br/dp/B0FD8VDXQH?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio" target="_blank" rel="noopener">
+      <li class="rev"><a class="lnk" href="https://www.amazon.com.br/dp/B0FD8VDXQH?utm_source=ig&amp;utm_medium=social&amp;utm_content=link_in_bio" target="_blank" rel="noopener">
         <span class="bolha"><svg><use href="#i-livro"/></svg></span>
         <span class="tx"><b>O Mar de Gaia</b><span>Na Amazon</span></span>
         <svg class="seta"><use href="#i-seta"/></svg></a></li>
     </ul>
 
-    <p class="rotulo">Fale com o Instituto</p>
+    <p class="rotulo rev">Fale com o Instituto</p>
     <ul class="lista">
-      <li><a class="lnk" href="https://wa.me/5571999972427?text=Ol%C3%A1%2C%20vim%20pelo%20Instagram%20do%20Instituto%20Gaia%20Soul." target="_blank" rel="noopener">
+      <li class="rev"><a class="lnk" href="https://wa.me/5571999972427?text=Ol%C3%A1%2C%20vim%20pelo%20Instagram%20do%20Instituto%20Gaia%20Soul." target="_blank" rel="noopener">
         <span class="bolha"><svg><use href="#i-whats"/></svg></span>
         <span class="tx"><b>WhatsApp do Instituto</b><span>Parcerias, escolas e voluntariado</span></span>
         <svg class="seta"><use href="#i-seta"/></svg></a></li>
     </ul>
   </div>
 </section>
+<section class="siga" aria-label="Siga o Instituto">
+  <div class="wrap">
+    <span class="gig rev">Siga o Instituto</span>
+    <p>Acompanhe os projetos em todos os canais oficiais.</p>
+    <ul>
+      <li class="rev"><a href="https://instagram.com/institutogaiasoul" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg><use href="#i-insta"/></svg></a></li>
+      <li class="rev"><a href="https://www.facebook.com/p/Instituto-Gaia-Soul-61552657763845/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><svg><use href="#i-face"/></svg></a></li>
+      <li class="rev"><a href="https://www.youtube.com/@InstitutoGaiaSoul" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg><use href="#i-play"/></svg></a></li>
+      <li class="rev"><a href="https://www.tiktok.com/@institutogaiasoul" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok"><svg><use href="#i-tiktok"/></svg></a></li>
+      <li class="rev"><a href="https://www.linkedin.com/company/instituto-gaia-soul/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg><use href="#i-linkedin"/></svg></a></li>
+      <li class="rev"><a href="https://br.pinterest.com/institutogaiasoul/" target="_blank" rel="noopener" aria-label="Pinterest" title="Pinterest"><svg><use href="#i-pinterest"/></svg></a></li>
+      <li class="rev"><a href="https://share.google/oN9QCGZIFGdvhcymP" target="_blank" rel="noopener" aria-label="Perfil no Google" title="Perfil no Google"><svg><use href="#i-google"/></svg></a></li>
+      <li class="rev"><a href="https://www.kwai.com/@institutogaiasoul" target="_blank" rel="noopener" aria-label="Kwai" title="Kwai"><svg><use href="#i-kwai"/></svg></a></li>
+      <li class="rev"><a href="https://wa.me/5571999972427" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp"><svg><use href="#i-whats"/></svg></a></li>
+    </ul>
+  </div>
+</section>
 </main>
 
 <footer class="rodape">
-  <div class="redes">
-    <a href="https://instagram.com/institutogaiasoul" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-insta"/></svg></a>
-    <a href="https://www.youtube.com/@InstitutoGaiaSoul" target="_blank" rel="noopener" aria-label="YouTube"><svg><use href="#i-play"/></svg></a>
-  </div>
   <p class="ass">Gaia Soul Instituto de Proteção e Educação Ambiental · CNPJ 34.941.993/0001-18</p>
   <div class="mg-credit">
     <span class="part">Site desenvolvido por <a href="https://mediagrowth.com.br/" target="_blank" rel="noopener">mediagrowth.com.br</a></span><span class="sep" aria-hidden="true">&middot;</span><span class="part">Feito com cuidado e tecnologia</span>
   </div>
 </footer>
 
+<script>
+document.addEventListener('DOMContentLoaded', function escalonarEntrada(){
+  if (!document.documentElement.classList.contains('anima')) return;
+  document.querySelectorAll('.rev').forEach(function(el, i){
+    el.style.setProperty('--d', Math.min(i * 80, 1100) + 'ms');
+  });
+});
+</script>
 </body>
 </html>
