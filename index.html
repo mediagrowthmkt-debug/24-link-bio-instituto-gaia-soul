@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Instituto Gaia Soul | Links oficiais</title>
-<meta name="description" content="Links oficiais do Instituto Gaia Soul: site do Instituto, Loja Gaia Soul, Imersão Azul, oceano em realidade virtual e muito mais.">
+<meta name="description" content="O Instituto Gaia Soul é uma organização sem fins lucrativos da Bahia que protege o oceano e leva a cultura oceânica para as escolas. Conheça os projetos no site ou vista a causa na Loja Gaia Soul.">
 <link rel="canonical" href="https://links.institutogaiasoul.ong.br/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Instituto Gaia Soul | O mar que liga tudo">
-<meta property="og:description" content="Site do Instituto, Loja Gaia Soul e todos os projetos em um só lugar.">
+<meta property="og:title" content="Instituto Gaia Soul | Comece a sua jornada pelo mar">
+<meta property="og:description" content="Organização sem fins lucrativos da Bahia que protege o oceano e leva a cultura oceânica para as escolas. Conheça os projetos ou vista a causa na Loja Gaia Soul.">
 <meta property="og:image" content="https://links.institutogaiasoul.ong.br/loja/img/heroi-camiseta-jubarte.webp">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#126782">
@@ -18,9 +18,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Barlow:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
+/* fontes reserva com a medida da Barlow: o texto não pula quando a fonte carrega (CLS) */
+@font-face{font-family:"Barlow Reserva";src:local("Arial"),local("Liberation Sans"),local("Helvetica");size-adjust:91%;ascent-override:104%;descent-override:21%;line-gap-override:0%}
+@font-face{font-family:"Barlow Condensed Reserva";font-weight:800;src:local("Arial Bold"),local("Arial"),local("Liberation Sans Bold"),local("Helvetica Bold");size-adjust:74%;ascent-override:118%;descent-override:24%;line-gap-override:0%}
 :root{
   --profundo:#0A2342;--mare:#126782;--turquesa:#2CA6A4;--claro:#8CDBEA;--areia:#F3EBDD;--branco:#FFFFFF;
-  --titulo:"Barlow Condensed",system-ui,sans-serif;--texto:"Barlow",system-ui,sans-serif;
+  --titulo:"Barlow Condensed","Barlow Condensed Reserva",sans-serif;--texto:"Barlow","Barlow Reserva",sans-serif;
   --larg:520px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -34,11 +37,11 @@ section{position:relative}
 .gig{display:block;font-family:var(--titulo);font-weight:800;text-transform:uppercase;line-height:.95}
 
 /* topo */
-.topo{background:var(--mare);color:var(--branco);padding:22px 0 52px;text-align:center;overflow:hidden}
-.topo .logo{width:88px;margin:0 auto 10px}
-.topo .gig{font-size:clamp(38px,11vw,56px)}
-.topo .fino{margin-bottom:6px}
-.topo p{font-size:15px;max-width:34ch;margin:8px auto 0;opacity:.92}
+.topo{background:var(--mare);color:var(--branco);padding:18px 0 46px;text-align:center;overflow:hidden}
+.topo .logo{width:76px;height:auto;aspect-ratio:320/195;margin:0 auto 8px}
+.topo .gig{font-size:clamp(34px,9.6vw,54px);line-height:.98;max-width:15ch;margin:0 auto;text-wrap:balance}
+.topo .fino{margin-bottom:6px;font-size:17px}
+.topo p{font-size:14px;line-height:1.45;max-width:42ch;margin:10px auto 0;opacity:.92;text-wrap:pretty}
 
 /* destaques: os dois sites */
 .destaques{background:var(--areia);padding:18px 0 62px}
@@ -133,8 +136,8 @@ section{position:relative}
 <section class="topo">
   <div class="wrap">
     <img class="logo rev" src="assets/logo-gaia-soul-branca.webp" alt="Instituto Gaia Soul" width="320" height="195">
-    <h1><span class="fino rev">Instituto Gaia Soul</span><span class="gig rev">O mar que liga tudo.</span></h1>
-    <p class="rev">Educação ambiental e cultura oceânica que nascem na Baía do Iguape e chegam às escolas de todo o Brasil.</p>
+    <h1><span class="fino rev">Instituto Gaia Soul</span><span class="gig rev">Comece a sua jornada pelo mar.</span></h1>
+    <p class="rev">Somos uma organização sem fins lucrativos da Bahia que protege o oceano e leva a cultura oceânica para as escolas. Entre no nosso site para conhecer os projetos e o impacto do Instituto, ou visite a Loja Gaia Soul e vista a causa com camisetas que ajudam a manter esse trabalho.</p>
   </div>
   <svg class="onda" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34C180 66 360 6 560 26S900 70 1100 40 1340 8 1440 30V70H0Z" fill="#F3EBDD"/></svg>
 </section>
